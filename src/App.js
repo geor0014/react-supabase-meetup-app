@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import AllMeetupsPage from "./pages/AllMeetups";
-import NewMeetup from "./pages/NewMettup";
+import NewMeetup from "./pages/NewMeetup";
 import FavoritesPage from "./pages/Favourites";
 import Layout from "./components/layout/Layout";
 
