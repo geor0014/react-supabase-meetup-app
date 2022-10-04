@@ -12,9 +12,20 @@ const FovoritesContextProvider = (props) => {
     totalFavorites: userFavorites.length,
   };
 
-  const addFavoriteHandler = (favoriteMeetup) => {};
-  const removeFavoriteHandler = (meetupId) => {};
-  const itemIsFavoriteHandler = (meetupId) => {};
+  const addFavoriteHandler = (favoriteMeetup) => {
+    setUserFavorites((prevUserFavorites) => {
+      return prevUserFavorites.concat(favoriteMeetup);
+    });
+  };
+  const removeFavoriteHandler = (meetupId) => {
+    setUserFavorites((prevUserFavorites) => {
+      return prevUserFavorites.filter((meetup) => meetup.id !== meetupId);
+    });
+  };
+  const itemIsFavoriteHandler = (meetupId) => {
+    return userFavorites.some((meetup) => meetup.id === meetupId);
+  };
+
   return (
     <FavoritesContex.Provider value={context}>
       {props.children}
