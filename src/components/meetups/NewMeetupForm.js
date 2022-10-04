@@ -2,7 +2,8 @@ import Card from "../ui/Card";
 import classes from "./NewMeetupForm.module.css";
 import { useRef } from "react";
 
-const NewMeetupForm = () => {
+const NewMeetupForm = (props) => {
+  // useRef() is a React hook that allows us to create a reference to a DOM element
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const addressInputRef = useRef();
@@ -10,11 +11,13 @@ const NewMeetupForm = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    // get the values from the input fields
     const enteredTitle = titleInputRef.current.value;
     const enteredImage = imageInputRef.current.value;
     const enteredAddress = addressInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
 
+    // create a meetup object
     const meetupData = {
       title: enteredTitle,
       image: enteredImage,
@@ -22,7 +25,8 @@ const NewMeetupForm = () => {
       description: enteredDescription,
     };
 
-    console.log(meetupData);
+    // pass the meetup object to the parent component
+    props.onAddMeetup(meetupData);
   };
 
   return (
